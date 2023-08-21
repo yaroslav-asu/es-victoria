@@ -52,7 +52,7 @@ export default defineComponent({
 .header {
   background-color: #fff;
   height: 70px;
-  padding: 30px;
+  padding: 30px 0;
   box-sizing: content-box;
   color: $dark;
 
