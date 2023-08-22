@@ -1,14 +1,22 @@
-import { boot } from 'quasar/wrappers'
-import { createI18n } from 'vue-i18n'
+import {boot} from 'quasar/wrappers'
+import {createI18n} from 'vue-i18n'
 import messages from 'src/i18n'
+import {Quasar, Cookies} from "quasar";
 
-export default boot(({ app }) => {
+export default boot(({app}) => {
+  let savedLocale = Cookies.get('lang')
+  let locale
+  if (savedLocale) {
+    locale = savedLocale
+  } else {
+    locale = Quasar.lang.getLocale()
+    Cookies.set('lang', locale)
+  }
   const i18n = createI18n({
-    locale: 'en-US',
+    locale: locale,
+    fallbackLocale: 'en',
     globalInjection: true,
     messages
   })
-
-  // Set i18n instance on app
   app.use(i18n)
 })
