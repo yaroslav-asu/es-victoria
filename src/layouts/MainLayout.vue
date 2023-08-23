@@ -3,10 +3,10 @@
     <q-header class="header">
       <div class="limiter">
         <nav class="header_part navigation">
-          <a class="nav_link">{{ $t('home')}}</a>
+          <a class="nav_link">{{ $t('home') }}</a>
           <a class="nav_link">{{ $t('shop') }}</a>
           <a class="nav_link">{{ $t('clothes') }}</a>
-          <a class="nav_link">{{$t('reviews')}}</a>
+          <a class="nav_link">{{ $t('reviews') }}</a>
         </nav>
         <img class="logo" src="~/assets/logo.png" alt="Es Victoria"/>
         <div class="header_part buttons">
@@ -19,6 +19,7 @@
           <button class="header_button cart">
             <q-icon class="icon" name="sym_r_shopping_bag"/>
           </button>
+          <LanguageSwitcher/>
         </div>
       </div>
     </q-header>
@@ -31,11 +32,13 @@
 <script>
 import {defineComponent} from 'vue'
 import {scroll} from 'quasar'
+import LanguageSwitcher from "src/composnents/LanguageSwitcher.vue";
 
 const {getScrollTarget, setVerticalScrollPosition} = scroll
 
 export default defineComponent({
   name: 'MainLayout',
+  components: {LanguageSwitcher},
   methods: {
     scrollTo(el, duration = 1000) {
       const target = getScrollTarget(el)

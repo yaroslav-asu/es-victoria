@@ -10,11 +10,11 @@ export default boot(({app}) => {
     locale = savedLocale
   } else {
     locale = Quasar.lang.getLocale()
-    Cookies.set('lang', locale)
+    Cookies.set('lang', locale, {sameSite: 'Strict'})
   }
   const i18n = createI18n({
     locale: locale,
-    fallbackLocale: 'en',
+    fallbackLocale: 'en-US',
     globalInjection: true,
     messages
   })
