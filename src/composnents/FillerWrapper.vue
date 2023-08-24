@@ -20,8 +20,8 @@ export default defineComponent({
   padding: 40px;
 
   .filler {
-    height: 80px;
-    width: 80px;
+    height: 40px;
+    width: 40px;
     position: absolute;
     border-radius: 10px;
     $background: rgba(#787878, 0.5);
@@ -43,7 +43,7 @@ export default defineComponent({
     }
   }
 
-  $size: 4px;
+  $size: 3px;
   $margin: 10px;
 
   .left_filler {

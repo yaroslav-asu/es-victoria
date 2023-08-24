@@ -58,7 +58,7 @@
               </div>
             </div>
 
-           <div class=""></div>
+            <div class=""></div>
           </div>
         </q-carousel-slide>
         <q-carousel-slide :name="2" class="slide second_slide">
@@ -80,6 +80,32 @@
             </div>
           </FillerWrapper>
         </q-carousel-slide>
+        <q-carousel-slide :name="3" class="slide third_slide">
+          <FillerWrapper class="image_wrapper first_image">
+            <img class="image" src="~/assets/section_1/photos/6118fb8269a0378477b5cbd620df05e3.jpg"
+                 alt="Woman standing">
+          </FillerWrapper>
+          <div class="content_wrapper">
+            <div class="title_wrapper">
+              <h1 class="slide_title" v-html="$t('firstSection.slides.third.title')"/>
+              <div class="separator"/>
+            </div>
+            <p class="text" v-html="$t('firstSection.slides.third.text')"/>
+            <a href="" class="start_link">
+              <p class="start_link_text" v-html="$t('firstSection.slides.third.startLink')"/>
+              <img
+                class="icon"
+                src="~/assets/icons/rightArrow.png"
+                alt="Arrow right"
+              >
+            </a>
+          </div>
+
+          <FillerWrapper class="image_wrapper second_image">
+            <img class="image" src="~/assets/section_1/photos/4559777f0e46f79fdaa3a174967dc3f9.jpg"
+                 alt="Woman standing">
+          </FillerWrapper>
+        </q-carousel-slide>
       </q-carousel>
     </div>
   </section>
@@ -94,7 +120,7 @@ export default defineComponent({
   components: {FillerWrapper},
   data() {
     return {
-      slide: 2
+      slide: 3
     }
   }
 })
@@ -342,6 +368,82 @@ export default defineComponent({
       }
     }
   }
+
+  .third_slide {
+    display: flex;
+    justify-content: space-between;
+    $accent: #7d4931;
+
+
+    .image_wrapper {
+      box-sizing: content-box;
+
+      &.first_image {
+        width: 431px;
+      }
+
+      &.second_image {
+        width: 456px;
+      }
+
+      .image {
+        height: 100%;
+
+      }
+
+    }
+
+    .content_wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      height: 80%;
+      padding: 60px 0;
+
+      .title_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .slide_title {
+          font-size: 40px;
+          line-height: 45px;
+        }
+
+        .separator {
+          width: 80%;
+          height: 2px;
+          background-color: $dark;
+          margin: 10px 0 40px 0;
+        }
+      }
+
+
+      .text {
+        font-size: 20px;
+        max-width: 80%;
+      }
+
+      .start_link {
+        display: flex;
+        flex-wrap: nowrap;
+
+        .start_link_text {
+          font-size: 20px;
+          color: $accent;
+        }
+
+        .icon {
+          width: 16px;
+          object-fit: contain;
+          position: relative;
+          top: 1px;
+        }
+      }
+    }
+  }
 }
 
 
@@ -360,6 +462,12 @@ export default defineComponent({
 <style lang="scss">
 .greeting_section {
   .second_slide {
+    span {
+      color: #7d4931;
+    }
+  }
+
+  .third_slide {
     span {
       color: #7d4931;
     }
