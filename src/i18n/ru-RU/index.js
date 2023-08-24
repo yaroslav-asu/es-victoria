@@ -1,6 +1,7 @@
-import header from "src/i18n/ru-RU/header";
+import firstSection from "src/i18n/ru-RU/firstSection";
+import buttons from "src/i18n/ru-RU/buttons/buttons";
 
 export default {
-  ...header,
-
+  firstSection,
+  buttons
 }

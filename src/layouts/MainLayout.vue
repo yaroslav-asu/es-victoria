@@ -3,23 +3,19 @@
     <q-header class="header">
       <div class="limiter">
         <nav class="header_part navigation">
-          <a class="nav_link">{{ $t('home') }}</a>
-          <a class="nav_link">{{ $t('shop') }}</a>
-          <a class="nav_link">{{ $t('clothes') }}</a>
-          <a class="nav_link">{{ $t('reviews') }}</a>
+          <BurgerMenu/>
         </nav>
         <img class="logo" src="~/assets/logo.png" alt="Es Victoria"/>
         <div class="header_part buttons">
           <button class="header_button search">
-            <q-icon class="icon" name="sym_r_search"/>
+            <img class="icon" src="~/assets/icons/loupe.png" alt="Search Button">
           </button>
           <button class="header_button account">
-            <q-icon class="icon" name="sym_r_person"/>
+            <img class="icon" src="~/assets/icons/bag.png" alt="Search Button">
           </button>
           <button class="header_button cart">
-            <q-icon class="icon" name="sym_r_shopping_bag"/>
+            <img class="icon" src="~/assets/icons/user.png" alt="Search Button">
           </button>
-          <LanguageSwitcher/>
         </div>
       </div>
     </q-header>
@@ -33,12 +29,13 @@
 import {defineComponent} from 'vue'
 import {scroll} from 'quasar'
 import LanguageSwitcher from "src/composnents/LanguageSwitcher.vue";
+import BurgerMenu from "src/composnents/BurgerMenu.vue";
 
 const {getScrollTarget, setVerticalScrollPosition} = scroll
 
 export default defineComponent({
   name: 'MainLayout',
-  components: {LanguageSwitcher},
+  components: {BurgerMenu, LanguageSwitcher},
   methods: {
     scrollTo(el, duration = 1000) {
       const target = getScrollTarget(el)
@@ -52,10 +49,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 .header {
   background-color: #fff;
-  height: 60px;
-  padding: 20px 0;
+  height: 44px;
+  padding: 11px 0;
   box-sizing: content-box;
   color: $dark;
+  -webkit-box-shadow: 0 0 67px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 67px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 67px 0 rgba(0, 0, 0, 0.2);
 
   .header_part {
     width: calc(50% - 53px);
@@ -84,13 +84,15 @@ export default defineComponent({
     .buttons {
       display: flex;
       justify-content: flex-end;
-      gap: 15px;
+      gap: 20px;
 
       .header_button {
         background: none;
+        display: flex;
+        align-items: center;
 
         .icon {
-          font-size: 35px;
+          max-width: 25px;
         }
       }
     }
