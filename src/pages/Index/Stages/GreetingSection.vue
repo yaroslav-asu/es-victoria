@@ -11,6 +11,7 @@
         padding
         class="slider greeting_slider"
         infinite
+        autoplay
         ref="carousel"
       >
         <template v-slot:control>
@@ -20,7 +21,7 @@
             @click="$refs.carousel.next()"
           >
             <button class="change_slide_button">
-              <img class="icon" src="~/assets/icons/rightArrow.png" alt="Right arrow">
+              <q-icon class="icon" name="sym_r_arrow_forward_ios"/>
             </button>
           </q-carousel-control>
           <q-carousel-control
@@ -29,37 +30,34 @@
             @click="$refs.carousel.previous()"
           >
             <button class="change_slide_button">
-              <img class="icon" src="~/assets/icons/leftArrow.png" alt="Left arrow">
+              <q-icon class="icon" name="sym_r_arrow_forward_ios"/>
             </button>
           </q-carousel-control>
         </template>
-        <q-carousel-slide :name="1" class="slide first_slide">
-          <div class="part">
-            <div class="collections_block">
-              <p class="collections_text">
-                Новые коллекции
-                <br/>
-                Весна 2023
-              </p>
+        <q-carousel-slide :name="1" class="slide third_slide">
+          <FillerWrapper class="image_wrapper first_image">
+            <img class="image" src="~/assets/section_1/photos/6118fb8269a0378477b5cbd620df05e3.jpg"
+                 alt="Woman standing">
+          </FillerWrapper>
+          <div class="content_wrapper">
+            <div class="title_wrapper">
+              <h1 class="slide_title" v-html="$t('firstSection.slides.third.title')"/>
+              <div class="separator"/>
             </div>
-            <div class="">
-              <h1 class="title">
-                Поймите Кто Вы Благодаря Нашей <span>Одежде</span>
-              </h1>
-              <div class="row">
-                <p class="description">
-                  Вырази себя с уверенностью в каждой детали! Стильная одежда — ключ к вашей неповторимой
-                  индивидуальности.
-                  Отражай свою личность через модные образы и создавай впечатление, которое запомнят навсегда.
-                </p>
-                <button class="start_button">
-                  <q-icon class="icon" name="sym_r_arrow_forward"/>
-                </button>
-              </div>
-            </div>
-
-            <div class=""></div>
+            <p class="text" v-html="$t('firstSection.slides.third.text')"/>
+            <a href="" class="start_link">
+              <p class="start_link_text" v-html="$t('firstSection.slides.third.startLink')"/>
+              <img
+                class="icon"
+                src="~/assets/icons/rightArrow.png"
+                alt="Arrow right"
+              >
+            </a>
           </div>
+          <FillerWrapper class="image_wrapper second_image">
+            <img class="image" src="~/assets/section_1/photos/4559777f0e46f79fdaa3a174967dc3f9.jpg"
+                 alt="Woman standing">
+          </FillerWrapper>
         </q-carousel-slide>
         <q-carousel-slide :name="2" class="slide second_slide">
           <FillerWrapper class="filler_wrapper">
@@ -80,30 +78,30 @@
             </div>
           </FillerWrapper>
         </q-carousel-slide>
-        <q-carousel-slide :name="3" class="slide third_slide">
-          <FillerWrapper class="image_wrapper first_image">
-            <img class="image" src="~/assets/section_1/photos/6118fb8269a0378477b5cbd620df05e3.jpg"
-                 alt="Woman standing">
-          </FillerWrapper>
-          <div class="content_wrapper">
-            <div class="title_wrapper">
-              <h1 class="slide_title" v-html="$t('firstSection.slides.third.title')"/>
-              <div class="separator"/>
+        <q-carousel-slide :name="3" class="slide first_slide">
+          <FillerWrapper class="filler_wrapper">
+            <div class="part">
+              <div class="collections_block">
+                <p class="collections_text">
+                  Новые коллекции
+                  <br/>
+                  Весна 2023
+                </p>
+              </div>
+              <div class="">
+                <h1 class="title">
+                  Поймите Кто Вы Благодаря Нашей <span>Одежде</span>
+                </h1>
+                <div class="row">
+                  <p class="description">
+                    Вырази себя с уверенностью в каждой детали! Стильная одежда — ключ к вашей неповторимой
+                    индивидуальности.
+                    Отражай свою личность через модные образы и создавай впечатление, которое запомнят навсегда.
+                  </p>
+                </div>
+              </div>
+              <div class=""/>
             </div>
-            <p class="text" v-html="$t('firstSection.slides.third.text')"/>
-            <a href="" class="start_link">
-              <p class="start_link_text" v-html="$t('firstSection.slides.third.startLink')"/>
-              <img
-                class="icon"
-                src="~/assets/icons/rightArrow.png"
-                alt="Arrow right"
-              >
-            </a>
-          </div>
-
-          <FillerWrapper class="image_wrapper second_image">
-            <img class="image" src="~/assets/section_1/photos/4559777f0e46f79fdaa3a174967dc3f9.jpg"
-                 alt="Woman standing">
           </FillerWrapper>
         </q-carousel-slide>
       </q-carousel>
@@ -120,7 +118,7 @@ export default defineComponent({
   components: {FillerWrapper},
   data() {
     return {
-      slide: 3
+      slide: 1
     }
   }
 })
@@ -135,23 +133,12 @@ export default defineComponent({
     height: 100%;
     display: flex;
     align-items: center;
-
-    &.control_right {
-      .change_slide_button {
-        justify-content: flex-end;
-
-        &::after {
-          left: 50%;
-          transform: translate(-50%, 0);
-        }
-      }
-    }
+    justify-content: center;
 
     &.control_left {
       .change_slide_button {
-        &::after {
-          left: 50%;
-          transform: translate(-50%, 0);
+        .icon {
+          transform: scale(-1, 1);
         }
       }
     }
@@ -171,6 +158,8 @@ export default defineComponent({
         position: absolute;
         border-radius: 50%;
         transition: background-color 0.3s ease-out;
+        left: 50%;
+        transform: translate(-50%, 0);
       }
 
       &:hover::after {
@@ -178,20 +167,28 @@ export default defineComponent({
       }
 
       .icon {
-        width: 16px;
+        font-size: 32px;
+        color: #ebebeb;
+        display: flex;
+        justify-content: center;
       }
     }
   }
 
   .slide {
-    padding: 40px;
+    padding: 60px;
   }
 
   .first_slide {
-    display: flex;
-    background: url("src/assets/section_1/photos/fd2bf24651299e029133fdafbb4c570b-up.jpg") no-repeat;
-    background-size: contain;
-    background-position-x: right;
+
+    .filler_wrapper {
+      display: flex;
+      background: url("src/assets/section_1/photos/fd2bf24651299e029133fdafbb4c570b-up.jpg") no-repeat;
+      background-size: contain;
+      background-position-x: right;
+      height: 100%;
+      background-origin: content-box;
+    }
 
     .part {
       width: 50%;
@@ -307,8 +304,8 @@ export default defineComponent({
 
 
       .slide_title {
-        font-size: 50px;
-        line-height: 65px;
+        font-size: 65px;
+        line-height: normal;
         font-weight: 400;
       }
 
@@ -331,7 +328,7 @@ export default defineComponent({
       }
 
       .start_button {
-        margin-top: 100px;
+        margin-top: 80px;
         font-size: 20px;
         padding: 25px 45px;
         color: white;
@@ -346,7 +343,7 @@ export default defineComponent({
           filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(298deg) brightness(102%) contrast(102%);
           position: relative;
           top: 1px;
-          margin-left: 7px;
+          margin-left: 4px;
         }
       }
     }
@@ -372,7 +369,13 @@ export default defineComponent({
   .third_slide {
     display: flex;
     justify-content: space-between;
-    $accent: #7d4931;
+    $accent: #787460;
+    background-image: url("src/assets/section_1/backgrounds/2background.png"),
+    url("src/assets/section_1/backgrounds/2background.png"),
+    url("src/assets/section_1/backgrounds/2background.png");
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: 0 top, center top, right top;
+    background-size: 33.3% 100%;
 
 
     .image_wrapper {
@@ -388,9 +391,10 @@ export default defineComponent({
 
       .image {
         height: 100%;
-
+        -webkit-box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.3);
       }
-
     }
 
     .content_wrapper {
@@ -399,7 +403,7 @@ export default defineComponent({
       align-items: center;
       justify-content: space-between;
       text-align: center;
-      height: 80%;
+      height: 87%;
       padding: 60px 0;
 
       .title_wrapper {
@@ -408,8 +412,8 @@ export default defineComponent({
         align-items: center;
 
         .slide_title {
-          font-size: 40px;
-          line-height: 45px;
+          font-size: 50px;
+          line-height: normal;
         }
 
         .separator {
@@ -420,10 +424,9 @@ export default defineComponent({
         }
       }
 
-
       .text {
-        font-size: 20px;
-        max-width: 80%;
+        font-size: 26px;
+        max-width: 70%;
       }
 
       .start_link {
@@ -431,7 +434,7 @@ export default defineComponent({
         flex-wrap: nowrap;
 
         .start_link_text {
-          font-size: 20px;
+          font-size: 28px;
           color: $accent;
         }
 
@@ -440,6 +443,7 @@ export default defineComponent({
           object-fit: contain;
           position: relative;
           top: 1px;
+          filter: invert(44%) sepia(2%) saturate(3202%) hue-rotate(13deg) brightness(99%) contrast(75%);
         }
       }
     }
@@ -469,7 +473,7 @@ export default defineComponent({
 
   .third_slide {
     span {
-      color: #7d4931;
+      color: #787460;
     }
   }
 }
