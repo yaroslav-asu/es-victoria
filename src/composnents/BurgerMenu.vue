@@ -3,7 +3,6 @@
     <div class="burger_menu_button"/>
     <p class="text">
       Меню
-
     </p>
   </div>
 </template>
