@@ -28,12 +28,12 @@ export default defineComponent({
         {title: 'shoes', image: '1',},
         {title: 'hoodie', image: '6', position: '0 0'},
         {title: 'hats', image: '4'},
-        {title: 'dresses', image: '3', imgStyle: {width: '150%'}, position: 'bottom 0px right 30px'},
+        {title: 'dresses', image: '3'},
         {title: 'tshirts', image: '5'},
         {title: 'outerwear', image: '2'},
-        {title: 'juwels', image: '8', imgStyle: {width: '300%'}, position: 'bottom 0 right 180px'},
+        {title: 'juwels', image: '8'},
         {title: 'jeansAndTrousers', image: '9'},
-        {title: 'glasses', image: '7', position: 'top -100px right 0px'},
+        {title: 'glasses', image: '7'},
       ]
     }
   }

@@ -168,7 +168,7 @@ export default defineComponent({
           display: flex;
           flex-direction: column;
           height: 100%;
-          min-width: calc(93.5vw / 4 - 45px);
+          min-width: calc(100% / 4 - 45px);
           position: relative;
 
           .product_image {
