@@ -16,7 +16,8 @@ export default boot(({app}) => {
     locale: locale,
     fallbackLocale: 'en-US',
     globalInjection: true,
-    messages
+    messages,
+    warnHtmlInMessage: 'off',
   })
   app.use(i18n)
 })

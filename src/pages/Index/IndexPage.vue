@@ -2,6 +2,7 @@
   <q-page>
     <GreetingSection/>
     <GenderChoose/>
+    <GoodsOfTheDay/>
   </q-page>
 </template>
 
@@ -9,10 +10,11 @@
 import {defineComponent} from 'vue'
 import GreetingSection from "pages/Index/Stages/GreetingSection.vue";
 import GenderChoose from "pages/Index/Stages/GenderChoose.vue";
+import GoodsOfTheDay from "pages/Index/Stages/GoodsOfTheDay.vue";
 
 export default defineComponent({
   name: 'IndexPage',
-  components: {GenderChoose, GreetingSection}
+  components: {GoodsOfTheDay, GenderChoose, GreetingSection}
 })
 </script>
 
