@@ -84,18 +84,25 @@
         <img src="~/assets/footer/payment/ems.svg" alt="Payment system">
         <img src="~/assets/footer/payment/cdek.svg" alt="Payment system">
       </div>
-      <p class="copyright">
-        © ES VICTORIA, 2023
-      </p>
+      <div class="row">
+        <p class="copyright">
+          © ES VICTORIA, 2023
+        </p>
+        <LanguageSwitcher/>
+      </div>
+
+
     </div>
   </footer>
 </template>
 
 <script>
 import {defineComponent} from 'vue'
+import LanguageSwitcher from "src/composnents/LanguageSwitcher.vue";
 
 export default defineComponent({
   name: "FooterSection",
+  components: {LanguageSwitcher},
   data() {
     return {}
   }
@@ -125,7 +132,8 @@ export default defineComponent({
         .col_title {
           font-size: 18px;
         }
-        .text{
+
+        .text {
           font-size: 16px;
         }
 
@@ -163,9 +171,15 @@ export default defineComponent({
       margin-bottom: 25px;
     }
 
-    .copyright {
-      text-align: center;
+    .row {
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
     }
+
+    //.copyright {
+    //  text-align: center;
+    //}
   }
 }
 </style>

@@ -14,6 +14,7 @@
          @mouseleave="() => mouseLeave(id)">
         {{ $t(`menu.${category.title}`) }}
       </p>
+      <LanguageSwitcher class="language_switcher"/>
     </div>
   </div>
   <div
@@ -195,9 +196,11 @@
 <script>
 import {defineComponent} from 'vue'
 import translations from 'src/i18n/ru-RU/menu/index.js'
+import LanguageSwitcher from "src/composnents/LanguageSwitcher.vue";
 
 export default defineComponent({
   name: "BurgerMenu",
+  components: {LanguageSwitcher},
   data() {
     return {
       isOpen: false,
@@ -356,9 +359,6 @@ export default defineComponent({
       this.isOpen = !this.isOpen
       if (this.isOpen) {
         this.updateMenuWidth()
-        // setTimeout(()=> {
-        //
-        // }, this.additionalMenuTransition)
         this.transition = false
       }
     },
@@ -501,7 +501,12 @@ export default defineComponent({
     padding-top: 27px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+
+    .language_switcher {
+      padding: 12px 60px;
+      width: 100%;
+    }
 
     .content_hover {
       cursor: pointer;

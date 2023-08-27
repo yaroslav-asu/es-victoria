@@ -10,6 +10,14 @@ export default boot(({app}) => {
     locale = savedLocale
   } else {
     locale = Quasar.lang.getLocale()
+    console.log(locale)
+    if (locale.includes('ru')) {
+      locale = 'ru-RU'
+    } else if (locale.includes('en')) {
+      locale = 'en-US'
+    } else {
+      locale = 'en-US'
+    }
     Cookies.set('lang', locale, {sameSite: 'Strict'})
   }
   const i18n = createI18n({
