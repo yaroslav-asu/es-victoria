@@ -18,14 +18,14 @@
         </div>
       </div>
       <div class="col image_col">
-        <q-img class="image" src="~/assets/section_2/photos/man_1.png"/>
+        <q-img class="image_wrapper" src="~/assets/section_2/photos/man_1.png"/>
         <a href="" class="go_to_link">
           {{ $t('secondSection.mensCatalog') }}
           <q-icon class="icon" name="sym_r_keyboard_arrow_right"/>
         </a>
       </div>
       <div class="col image_col">
-        <q-img class="image" src="~/assets/section_2/photos/woman_1.png"/>
+        <q-img class="image_wrapper" src="~/assets/section_2/photos/woman_1.png"/>
         <a href="" class="go_to_link">
           {{ $t('secondSection.womensCatalog') }}
           <q-icon class="icon" name="sym_r_keyboard_arrow_right"/>
@@ -111,7 +111,7 @@ export default defineComponent({
       align-items: center;
       padding: 0 0 40px 0;
 
-      .image {
+      .image_wrapper {
         margin-bottom: 40px;
         width: 100%;
 

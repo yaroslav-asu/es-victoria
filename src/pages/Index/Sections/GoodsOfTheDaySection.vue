@@ -98,8 +98,8 @@ export default defineComponent({
   },
   computed: {
     rightPadding() {
-      if (this.slider.page === 1) return 60
-      return (this.slider.page - 1) * this.slider.shift * this.productWidth + (this.slider.page - 1) * this.slider.shift * 60 + 60
+      if (this.slider.page === 1) return 30
+      return (this.slider.page - 1) * this.slider.shift * this.productWidth + (this.slider.page - 1) * this.slider.shift * 60 + 30
     }
   }
 })
@@ -136,7 +136,6 @@ export default defineComponent({
       .control_wrapper {
         position: absolute;
         height: 100%;
-        padding: 10px;
         top: 0;
         display: flex;
         align-items: center;
@@ -153,6 +152,7 @@ export default defineComponent({
           z-index: 1;
           background-color: transparent;
           font-size: 30px;
+          height: 100%;
         }
       }
 

@@ -36,7 +36,7 @@
         </template>
         <q-carousel-slide :name="1" class="slide third_slide">
           <FillerWrapper class="image_wrapper first_image">
-            <img class="image" src="~/assets/section_1/photos/6118fb8269a0378477b5cbd620df05e3.jpg"
+            <img class="image_wrapper" src="~/assets/section_1/photos/6118fb8269a0378477b5cbd620df05e3.jpg"
                  alt="Woman standing">
           </FillerWrapper>
           <div class="content_wrapper">
@@ -55,7 +55,7 @@
             </a>
           </div>
           <FillerWrapper class="image_wrapper second_image">
-            <img class="image" src="~/assets/section_1/photos/4559777f0e46f79fdaa3a174967dc3f9.jpg"
+            <img class="image_wrapper" src="~/assets/section_1/photos/4559777f0e46f79fdaa3a174967dc3f9.jpg"
                  alt="Woman standing">
           </FillerWrapper>
         </q-carousel-slide>
@@ -389,7 +389,7 @@ export default defineComponent({
         width: 456px;
       }
 
-      .image {
+      .image_wrapper {
         height: 100%;
         -webkit-box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.3);
         -moz-box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.3);
