@@ -82,21 +82,13 @@
           <FillerWrapper class="filler_wrapper">
             <div class="part">
               <div class="collections_block">
-                <p class="collections_text">
-                  Новые коллекции
-                  <br/>
-                  Весна 2023
-                </p>
+                <p class="collections_text" v-html="$t('firstSection.slides.first.collectionsText')"/>
               </div>
               <div class="">
-                <h1 class="title">
-                  Поймите Кто Вы Благодаря Нашей <span>Одежде</span>
-                </h1>
+                <h1 class="title" v-html="$t('firstSection.slides.first.title')"/>
                 <div class="row">
                   <p class="description">
-                    Вырази себя с уверенностью в каждой детали! Стильная одежда — ключ к вашей неповторимой
-                    индивидуальности.
-                    Отражай свою личность через модные образы и создавай впечатление, которое запомнят навсегда.
+                    {{ $t('firstSection.slides.first.description') }}
                   </p>
                 </div>
               </div>
@@ -231,13 +223,7 @@ export default defineComponent({
         font-weight: 400;
         margin-bottom: 40px;
 
-        span {
-          transform: rotate(70deg);
-          -ms-transform: rotate(70deg);
-          -webkit-transform: rotate(-3deg);
-          color: $accent;
-          display: inline-block;
-        }
+
       }
 
       .row {
@@ -465,6 +451,16 @@ export default defineComponent({
 
 <style lang="scss">
 .greeting_section {
+  .first_slide {
+    span {
+      transform: rotate(70deg);
+      -ms-transform: rotate(70deg);
+      -webkit-transform: rotate(-3deg);
+      color: $accent;
+      display: inline-block;
+    }
+  }
+
   .second_slide {
     span {
       color: #7d4931;

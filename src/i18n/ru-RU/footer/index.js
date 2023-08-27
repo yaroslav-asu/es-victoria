@@ -10,6 +10,6 @@ export default {
   firstAddress: 'Крала Милутина **',
   beograd: 'Белград',
   secondAddress: 'г. Москва, ул. Ленина, д. 2',
-  noviSad: 'Нови Сад',
+  novisad: 'Нови Сад',
   contactNumbers: 'Номера связи',
 }
