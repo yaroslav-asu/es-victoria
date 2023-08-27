@@ -14,6 +14,8 @@ export default boot(({app}) => {
       locale = 'ru-RU'
     } else if (locale.includes('en') || locale.includes('us') || locale.includes('uk')) {
       locale = 'en-US'
+    } else if (locale.includes('sr') || locale.includes('hr') || locale.includes('bs') || locale.includes('rs')) {
+      locale = 'sr-RS'
     } else {
       locale = 'en-US'
     }

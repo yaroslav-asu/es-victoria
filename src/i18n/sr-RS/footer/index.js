@@ -1,0 +1,15 @@
+export default {
+  support: 'Подршка',
+  contactUs: 'Контактирајте нас',
+  deliveryAndPayment: 'Испорука и плаћање',
+  account: 'Налог',
+  login: 'Пријавите се на налог',
+  passwordRecovery: 'Опоравак лозинке',
+  clothes: 'Одевни предмети',
+  ourAddresses: 'Наши адреси',
+  firstAddress: 'Краља Милутина **',
+  beograd: 'Београд',
+  secondAddress: 'Краља Александра **',
+  novisad: 'Нови Сад',
+  contactNumbers: 'Контакт бројеви',
+}

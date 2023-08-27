@@ -19,6 +19,10 @@ export default defineComponent({
           label: 'English',
           value: 'en-US'
         },
+        {
+          label: 'Српски',
+          value: 'sr-RS'
+        },
       ]
     }
   },
