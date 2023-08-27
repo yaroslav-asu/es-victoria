@@ -51,13 +51,6 @@ export default defineComponent({
       setVerticalScrollPosition(target, offset, duration)
     },
     toggleSearch() {
-      // if (!this.searchShowed) {
-      //   this.hideSearch = false
-      // } else {
-      //   setTimeout(() => {
-      //     this.hideSearch = true
-      //   }, 500)
-      // }
       this.searchShowed = !this.searchShowed
     }
   },

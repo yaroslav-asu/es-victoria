@@ -1,9 +1,9 @@
 <template>
-  <q-select v-model="currentLang" class="lang_switcher" :options="languages" map-options borderless dense/>
+  <q-select v-model="currentLang" class="lang_switcher" :options="languages" map-options borderless dense @update:model-value="updateLocale"/>
 </template>
 
 <script>
-import {defineComponent} from 'vue'
+import {defineComponent, nextTick} from 'vue'
 
 export default defineComponent({
   name: "LanguageSwitcher",
@@ -22,49 +22,23 @@ export default defineComponent({
       ]
     }
   },
-  watch: {
-    currentLang() {
+  methods: {
+    updateLocale() {
       this.$q.cookies.set('lang', this.currentLang.value, {sameSite: 'Strict'})
       this.$i18n.locale = this.currentLang.value
     },
+  },
+  watch: {
+    '$i18n.locale': function (val) {
+      console.log(this.currentLang, val)
+      nextTick(() => {
+        this.currentLang = val
+      })
+    }
   },
 })
 </script>
 
 <style scoped lang="scss">
-.lang_switcher_wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  &::after {
-    content: 'expand_more';
-    font-family: "Material Symbols Rounded";
-    color: $dark;
-    display: inline-block;
-    //position: absolute;
-    //right: 20px;
-    //top: 15px;
-    pointer-events: none;
-  }
-}
-
-.lang_switcher {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  height: 100%;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  text-align: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  //padding: 20px 0 20px 60px;
-
-}
 </style>

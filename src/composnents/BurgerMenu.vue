@@ -2,12 +2,13 @@
   <div class="burger_menu_wrapper" @click="toggle">
     <button class="burger_menu_button" :class="isOpen ? 'burger--active' : ''"/>
     <p class="text">
-      Меню
+      {{ $t('buttons.menu') }}
     </p>
   </div>
   <div class="limiter" ref="limiter"/>
   <div class="overlay" @click="toggle" v-if="this.isOpen"/>
-  <div class="menu" :style="{width: isOpen ? `${menuWidth}px` : '0',  transition: !tr ? 'none !important' : ''}"
+  <div class="menu"
+       :style="{width: isOpen ? `${menuWidth}px` : '0',  transition: !menuResizeTransition ? 'none !important' : ''}"
        :class="isOpen ? 'menu--active': ''">
     <div class="content">
       <p class="content_hover" v-for="(category, id) in categories" @mouseenter="() => mouseEnter(id)"
@@ -351,7 +352,7 @@ export default defineComponent({
       menuWidth: 0,
       additionalMenuTransition: 100,
       translations,
-      tr: true
+      menuResizeTransition: true
     }
   },
   methods: {
@@ -384,9 +385,9 @@ export default defineComponent({
     },
     screenResize() {
       this.updateMenuWidth()
-      this.tr = false
+      this.menuResizeTransition = false
       setTimeout(() => {
-        this.tr = true
+        this.menuResizeTransition = true
       }, 500)
     },
     updateMenuWidth() {

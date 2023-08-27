@@ -90,8 +90,6 @@
         </p>
         <LanguageSwitcher/>
       </div>
-
-
     </div>
   </footer>
 </template>
@@ -103,9 +101,6 @@ import LanguageSwitcher from "src/composnents/LanguageSwitcher.vue";
 export default defineComponent({
   name: "FooterSection",
   components: {LanguageSwitcher},
-  data() {
-    return {}
-  }
 })
 </script>
 

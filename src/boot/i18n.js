@@ -9,11 +9,10 @@ export default boot(({app}) => {
   if (savedLocale) {
     locale = savedLocale
   } else {
-    locale = Quasar.lang.getLocale()
-    console.log(locale)
-    if (locale.includes('ru')) {
+    locale = Quasar.lang.getLocale().toLowerCase()
+    if (locale.includes('ru') || locale.includes('by') || locale.includes('ua')) {
       locale = 'ru-RU'
-    } else if (locale.includes('en')) {
+    } else if (locale.includes('en') || locale.includes('us') || locale.includes('uk')) {
       locale = 'en-US'
     } else {
       locale = 'en-US'

@@ -1,3 +1,4 @@
 export default {
-  goTo: 'Перейти'
+  goTo: 'Перейти',
+  menu: 'Меню',
 }
