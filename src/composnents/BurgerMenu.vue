@@ -7,7 +7,8 @@
   </div>
   <div class="limiter" ref="limiter"/>
   <div class="overlay" @click="toggle" v-if="this.isOpen"/>
-  <div class="menu" :style="{width: isOpen ? `${menuWidth}px` : '0'}" :class="isOpen ? 'menu--active': ''">
+  <div class="menu" :style="{width: isOpen ? `${menuWidth}px` : '0',  transition: !tr ? 'none !important' : ''}"
+       :class="isOpen ? 'menu--active': ''">
     <div class="content">
       <p class="content_hover" v-for="(category, id) in categories" @mouseenter="() => mouseEnter(id)"
          @mouseleave="() => mouseLeave(id)">
@@ -346,14 +347,19 @@ export default defineComponent({
       additionalMenuHovered: false,
       menuWidth: 0,
       additionalMenuTransition: 100,
-      translations
+      translations,
+      tr: true
     }
   },
   methods: {
     toggle() {
       this.isOpen = !this.isOpen
       if (this.isOpen) {
-        this.menuWidth = this.$refs.limiter.getBoundingClientRect().left + 200
+        this.updateMenuWidth()
+        // setTimeout(()=> {
+        //
+        // }, this.additionalMenuTransition)
+        this.transition = false
       }
     },
     mouseEnter(id) {
@@ -375,6 +381,16 @@ export default defineComponent({
           category.isHovered = false
         }, this.additionalMenuTransition)
       })
+    },
+    screenResize() {
+      this.updateMenuWidth()
+      this.tr = false
+      setTimeout(() => {
+        this.tr = true
+      }, 500)
+    },
+    updateMenuWidth() {
+      this.menuWidth = this.$refs.limiter.getBoundingClientRect().left + 200
     }
   },
   watch: {
@@ -384,6 +400,9 @@ export default defineComponent({
           clearTimeout(category.stopTimeout)
         })
       }
+    },
+    '$q.screen.width': function () {
+      this.screenResize()
     }
   }
 })
@@ -398,7 +417,7 @@ export default defineComponent({
   height: calc(100dvh - 66px);
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 0;
-  transition: width 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .burger_menu_wrapper {
@@ -414,7 +433,7 @@ export default defineComponent({
     position: relative;
     background-color: $dark;
     margin-right: 10px;
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, top 0.3s ease-in-out;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out, top 0.3s ease-in-out;
 
     &.burger--active {
       background-color: transparent;
@@ -452,7 +471,6 @@ export default defineComponent({
       position: relative;
       border-radius: inherit;
       transition: inherit;
-
     }
   }
 }
@@ -592,7 +610,7 @@ export default defineComponent({
         display: flex;
         flex-direction: column;
         max-height: 350px;
-        align-items: start;
+        align-items: flex-start;
         flex-wrap: wrap;
         margin-bottom: 40px;
       }
