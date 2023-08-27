@@ -357,6 +357,9 @@ export default defineComponent({
       }
     },
     mouseEnter(id) {
+      this.categories.forEach((category) => {
+        category.isHovered = false
+      })
       this.categories[id].isHovered = true
       clearTimeout(this.categories[id].stopTimeout)
     },
