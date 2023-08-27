@@ -9,7 +9,7 @@ export default {
   ourAddresses: 'Наши адреса',
   firstAddress: 'Крала Милутина **',
   beograd: 'Белград',
-  secondAddress: 'г. Москва, ул. Ленина, д. 2',
+  secondAddress: 'Клала Александра **',
   novisad: 'Нови Сад',
   contactNumbers: 'Номера связи',
 }
