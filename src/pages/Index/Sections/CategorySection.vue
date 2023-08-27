@@ -43,7 +43,7 @@ export default defineComponent({
 <style scoped lang="scss">
 .category_section {
   $gap: 15px;
-  padding: 30px 0;
+  padding: 30px 0 7rem;
 
   .categories {
     $widthGap: calc(#{$gap} * 4 / 5);
