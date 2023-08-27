@@ -1,5 +1,6 @@
 <template>
-  <q-select v-model="currentLang" class="lang_switcher" :options="languages" map-options borderless dense @update:model-value="updateLocale"/>
+  <q-select v-model="currentLang" class="lang_switcher" :options="languages" map-options borderless dense
+            @update:model-value="updateLocale"/>
 </template>
 
 <script>
@@ -22,6 +23,10 @@ export default defineComponent({
         {
           label: 'Српски',
           value: 'sr-RS'
+        },
+        {
+          label: 'Türkçe',
+          value: 'tr-TR'
         },
       ]
     }

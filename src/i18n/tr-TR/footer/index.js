@@ -1,0 +1,15 @@
+export default {
+  support: 'Destek',
+  contactUs: 'Bize Ulaşın',
+  deliveryAndPayment: 'Teslimat ve Ödeme',
+  account: 'Hesap',
+  login: 'Hesaba Giriş Yap',
+  passwordRecovery: 'Parola Kurtarma',
+  clothes: 'Kıyafetler',
+  ourAddresses: 'Adreslerimiz',
+  firstAddress: 'Kralja Milutina **',
+  beograd: 'Belgrad',
+  secondAddress: 'Kralja Aleksandra **',
+  novisad: 'Novi Sad',
+  contactNumbers: 'İletişim Numaraları',
+}
