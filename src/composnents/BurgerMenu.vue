@@ -24,9 +24,10 @@
     @mouseenter="additionalMenuHovered = true"
     @mouseleave="additionalMenuLeave"
   >
-    <div class="menu_content first_content_style mirror_style" v-if="categories[0].isHovered">
+    <div class="menu_content first_content_style mirror_style" v-if="categories[0].isHovered"
+         :style="{ width: $q.screen.width <= 720 ? additionalMenuWidth: ''}">
       <div class="row">
-        <div class="col">
+        <div class="col brands_col">
           <p class="column_title">{{ $t('menu.titles.brands').toUpperCase() }}</p>
           <a class="link" v-for="brand in content.novelties.brands" :key="brand.link"
              :href="brand.link">{{ brand.title }}</a>
@@ -52,7 +53,8 @@
         </a>
       </div>
     </div>
-    <div class="menu_content bradns_style" v-if="categories[1].isHovered">
+    <div class="menu_content bradns_style" v-if="categories[1].isHovered"
+         :style="{ width: $q.screen.width <= 720 ? additionalMenuWidth: ''}">
       <div class="col">
         <p class="column_title">{{ $t('menu.titles.brands').toUpperCase() }}</p>
         <div class="col brands">
@@ -75,9 +77,10 @@
         </a>
       </div>
     </div>
-    <div class="menu_content first_content_style mirror_style" v-if="categories[2].isHovered">
+    <div class="menu_content first_content_style mirror_style" v-if="categories[2].isHovered"
+         :style="{ width: $q.screen.width <= 720 ? additionalMenuWidth: ''}">
       <div class="row">
-        <div class="col">
+        <div class="col brands_col">
           <p class="column_title">{{ $t('menu.titles.brands').toUpperCase() }}</p>
           <a class="link" v-for="brand in content.mens.brands" :key="brand.link"
              :href="brand.link">{{ brand.title }}</a>
@@ -103,9 +106,10 @@
         </a>
       </div>
     </div>
-    <div class="menu_content first_content_style" v-if="categories[3].isHovered">
+    <div class="menu_content first_content_style" v-if="categories[3].isHovered"
+         :style="{ width: $q.screen.width <= 720 ? additionalMenuWidth: ''}">
       <div class="row">
-        <div class="col">
+        <div class="col brands_col">
           <p class="column_title">{{ $t('menu.titles.brands').toUpperCase() }}</p>
           <a class="link" v-for="brand in content.womens.brands" :key="brand.link"
              :href="brand.link">{{ brand.title }}</a>
@@ -131,9 +135,10 @@
         </a>
       </div>
     </div>
-    <div class="menu_content first_content_style" v-if="categories[4].isHovered">
+    <div class="menu_content first_content_style" v-if="categories[4].isHovered"
+         :style="{ width: $q.screen.width <= 720 ? additionalMenuWidth: ''}">
       <div class="row">
-        <div class="col">
+        <div class="col brands_col">
           <p class="column_title">{{ $t('menu.titles.brands').toUpperCase() }}</p>
           <a class="link" v-for="brand in content.accessories.brands" :key="brand.link"
              :href="brand.link">{{ brand.title }}</a>
@@ -163,9 +168,10 @@
         </a>
       </div>
     </div>
-    <div class="menu_content first_content_style mirror_style" v-if="categories[5].isHovered">
+    <div class="menu_content first_content_style mirror_style" v-if="categories[5].isHovered"
+         :style="{ width: $q.screen.width <= 720 ? additionalMenuWidth: ''}">
       <div class="row">
-        <div class="col">
+        <div class="col brands_col">
           <p class="column_title">{{ $t('menu.titles.brands').toUpperCase() }}</p>
           <a class="link" v-for="brand in content.sales.brands" :key="brand.link"
              :href="brand.link">{{ brand.title }}</a>
@@ -203,6 +209,9 @@ export default defineComponent({
   name: "BurgerMenu",
   components: {LanguageSwitcher},
   data() {
+    this.$nextTick(() => {
+      this.changeBrands()
+    })
     return {
       isOpen: false,
       categories: [
@@ -232,35 +241,7 @@ export default defineComponent({
             {title: 'cosmetics', link: ''}
           ]
         },
-        brands: [
-          {title: 'Valentino', link: ''},
-          {title: 'Givenchy', link: ''},
-          {title: 'Ralph Lauren', link: ''},
-          {title: 'Vans', link: ''},
-          {title: 'Balenciaga', link: ''},
-          {title: 'Puma', link: ''},
-          {title: 'Gucci', link: ''},
-          {title: 'Levi\'s', link: ''},
-          {title: 'Armani', link: ''},
-          {title: 'New Balance', link: ''},
-          {title: 'Diesel', link: ''},
-          {title: 'Reebok', link: ''},
-          {title: 'Nike', link: ''},
-          {title: 'Hugo Boss', link: ''},
-          {title: 'Fendi', link: ''},
-          {title: 'Zara', link: ''},
-          {title: 'Dolce & Gabbana', link: ''},
-          {title: 'Tommy Hilfiger', link: ''},
-          {title: 'Gap', link: ''},
-          {title: 'Chanel', link: ''},
-          {title: 'Burberry', link: ''},
-          {title: 'Calvin Klein', link: ''},
-          {title: 'Lacoste', link: ''},
-          {title: 'Saint Laurent', link: ''},
-          {title: 'Versace', link: ''},
-          {title: 'Dior', link: ''},
-          {title: 'Kenzo', link: ''}
-        ],
+        brands: [],
         mens: {
           brands: [
             {title: "Hugo Boss", link: ""},
@@ -352,7 +333,9 @@ export default defineComponent({
       menuWidth: 0,
       additionalMenuTransition: 100,
       translations,
-      menuResizeTransition: true
+      menuResizeTransition: true,
+      additionalMenuWidth: 0,
+      additionalMenuTransform: false
     }
   },
   methods: {
@@ -361,6 +344,11 @@ export default defineComponent({
       if (this.isOpen) {
         this.updateMenuWidth()
         this.transition = false
+        if (this.$q.screen.width <= 720) {
+          this.showOpenAdditionalMenuAnimation()
+        }
+      } else {
+        this.additionalMenuWidth = 0
       }
     },
     mouseEnter(id) {
@@ -391,7 +379,65 @@ export default defineComponent({
       }, 500)
     },
     updateMenuWidth() {
-      this.menuWidth = this.$refs.limiter.getBoundingClientRect().left + 200
+      this.menuWidth = this.$refs.limiter.getBoundingClientRect().left
+      if (this.$q.screen.width >= 790) {
+        this.menuWidth += 200
+      } else {
+        this.menuWidth += 130
+      }
+    },
+    showOpenAdditionalMenuAnimation() {
+      this.additionalMenuWidth = `calc(100vw - ${this.menuWidth}px)`
+    },
+    changeBrands() {
+      if (this.$q.screen.width <= 790) {
+        this.content.brands = [
+          {title: 'Valentino', link: ''},
+          {title: 'Givenchy', link: ''},
+          {title: 'Ralph Lauren', link: ''},
+          {title: 'Vans', link: ''},
+          {title: 'Balenciaga', link: ''},
+          {title: 'Puma', link: ''},
+          {title: 'Gucci', link: ''},
+          {title: 'Levi\'s', link: ''},
+          {title: 'Armani', link: ''},
+          {title: 'New Balance', link: ''},
+          {title: 'Diesel', link: ''},
+          {title: 'Reebok', link: ''},
+          {title: 'Nike', link: ''},
+          {title: 'Hugo Boss', link: ''},
+        ]
+      } else {
+        this.content.brands = [
+          {title: 'Valentino', link: ''},
+          {title: 'Givenchy', link: ''},
+          {title: 'Ralph Lauren', link: ''},
+          {title: 'Vans', link: ''},
+          {title: 'Balenciaga', link: ''},
+          {title: 'Puma', link: ''},
+          {title: 'Gucci', link: ''},
+          {title: 'Levi\'s', link: ''},
+          {title: 'Armani', link: ''},
+          {title: 'New Balance', link: ''},
+          {title: 'Diesel', link: ''},
+          {title: 'Reebok', link: ''},
+          {title: 'Nike', link: ''},
+          {title: 'Hugo Boss', link: ''},
+          {title: 'Fendi', link: ''},
+          {title: 'Zara', link: ''},
+          {title: 'Dolce & Gabbana', link: ''},
+          {title: 'Tommy Hilfiger', link: ''},
+          {title: 'Gap', link: ''},
+          {title: 'Chanel', link: ''},
+          {title: 'Burberry', link: ''},
+          {title: 'Calvin Klein', link: ''},
+          {title: 'Lacoste', link: ''},
+          {title: 'Saint Laurent', link: ''},
+          {title: 'Versace', link: ''},
+          {title: 'Dior', link: ''},
+          {title: 'Kenzo', link: ''}
+        ]
+      }
     }
   },
   watch: {
@@ -404,12 +450,44 @@ export default defineComponent({
     },
     '$q.screen.width': function () {
       this.screenResize()
+      this.changeBrands()
     }
-  }
+  },
 })
 </script>
 
 <style scoped lang="scss">
+@media (max-width: 790px) {
+  .content {
+    width: 130px;
+
+    .content_hover {
+      padding: 20px 0 !important;
+    }
+
+    .language_switcher {
+      padding: 12px 18px !important;
+    }
+  }
+  .categories_demonstration {
+    display: none !important;
+  }
+  .brands_col {
+    display: none !important;
+  }
+  .bradns_style {
+    .col.brands {
+      overflow: hidden;
+      margin-bottom: 0 !important;
+      max-height: 100% !important;
+    }
+  }
+  //.menu_content {
+  //  padding-left: 10px !important;
+  //}
+}
+
+
 .overlay {
   position: absolute;
   top: 66px;
@@ -490,7 +568,7 @@ export default defineComponent({
   height: 100dvh;
   background-color: white;
   z-index: 1;
-  transition: width 0.2s ease-in-out;
+  transition: width 0.2s linear;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -514,6 +592,8 @@ export default defineComponent({
       width: 100%;
       padding: 20px 60px;
       text-align: center;
+      white-space: nowrap;
+
 
       &:hover {
         background-color: rgba(0, 0, 0, 0.1);
@@ -528,6 +608,7 @@ export default defineComponent({
   height: calc(100dvh - 66px);
   top: 66px;
   background-color: white;
+  transition: max-width 0.25s linear;
 
   .menu_content {
     padding: 40px;
