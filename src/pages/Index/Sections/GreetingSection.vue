@@ -11,7 +11,6 @@
         padding
         class="slider greeting_slider"
         infinite
-        autoplay
         ref="carousel"
       >
         <template v-slot:control>
@@ -36,7 +35,7 @@
         </template>
         <q-carousel-slide :name="1" class="slide third_slide">
           <FillerWrapper class="image_wrapper first_image">
-            <img class="image_wrapper" src="~/assets/section_1/photos/6118fb8269a0378477b5cbd620df05e3.jpg"
+            <img class="image" src="~/assets/section_1/photos/6118fb8269a0378477b5cbd620df05e3.jpg"
                  alt="Woman standing">
           </FillerWrapper>
           <div class="content_wrapper">
@@ -55,7 +54,7 @@
             </a>
           </div>
           <FillerWrapper class="image_wrapper second_image">
-            <img class="image_wrapper" src="~/assets/section_1/photos/4559777f0e46f79fdaa3a174967dc3f9.jpg"
+            <img class="image" src="~/assets/section_1/photos/4559777f0e46f79fdaa3a174967dc3f9.jpg"
                  alt="Woman standing">
           </FillerWrapper>
         </q-carousel-slide>
@@ -110,13 +109,281 @@ export default defineComponent({
   components: {FillerWrapper},
   data() {
     return {
-      slide: 1
+      slide: 3
     }
   }
 })
 </script>
 
 <style scoped lang="scss">
+
+@media (max-width: 1600px) {
+  .third_slide {
+    .first_image {
+      display: none !important;
+    }
+
+    .content_wrapper {
+      width: 50% !important;
+      align-items: flex-start !important;
+      text-align: start !important;
+
+      .title_wrapper {
+        align-items: flex-start !important;
+      }
+    }
+
+    .second_image {
+      width: 50% !important;
+
+      .image {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1550px) {
+  .first_slide {
+    .filler_wrapper {
+      background-size: 50% !important;
+      background-position-y: center !important;
+    }
+
+    .part {
+      padding: 30px !important;
+      width: 45% !important;
+
+      .title {
+        font-size: 60px !important;
+        line-height: normal !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 1350px) {
+  .first_slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .filler_wrapper {
+      height: auto !important;
+    }
+
+    .collections_block {
+      margin-bottom: 50px;
+    }
+  }
+}
+
+@media (max-width: 1220px) {
+  .first_slide {
+    .filler_wrapper {
+      background-size: 45% !important;
+    }
+
+    .part {
+      width: 50% !important;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .second_slide {
+    .slide_title {
+      font-size: 50px !important;
+    }
+
+
+  }
+  .slide {
+    .filler_wrapper {
+      padding: 20px !important;
+    }
+  }
+}
+
+@media (max-width: 1130px) {
+  .first_slide {
+    .part {
+      .title {
+        font-size: 50px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 1010px) {
+  .first_slide {
+    .part {
+      .title {
+        font-size: 40px !important;
+      }
+    }
+
+    .filler_wrapper {
+      padding: 20px !important;
+    }
+
+    .collections_text {
+      font-size: 25px !important;
+    }
+
+  }
+  .third_slide {
+    background-image: url(http://localhost:8080/img/2background.a09f2a99.png) !important;
+    background-size: auto !important;
+    background-position: center center !important;
+
+    .content_wrapper {
+      width: 100% !important;
+      align-items: center !important;
+      text-align: center !important;
+
+      .title_wrapper {
+        align-items: center !important;
+      }
+    }
+
+    .second_image {
+      display: none !important;
+    }
+  }
+}
+
+@media (max-width: 980px) {
+  .first_slide {
+    .filler_wrapper {
+      background: none !important;
+    }
+
+    .part {
+      width: 100% !important;
+
+      .collections_block {
+        margin-bottom: 20px !important;
+      }
+
+      .title {
+        font-size: 35px !important;
+        text-align: center;
+      }
+
+      .description {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .first_slide {
+    .part {
+      .title {
+        font-size: 35px !important;
+      }
+    }
+  }
+  .second_slide {
+    .photo_part {
+      display: none !important;
+    }
+
+    .part {
+      align-items: center !important;
+      text-align: center !important;
+    }
+  }
+}
+
+
+@media (max-width: 800px) {
+  .q-carousel__control {
+    display: none !important;
+  }
+  .slide {
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .first_slide {
+    .part {
+      padding: 0 !important;
+
+      .collections_block {
+        margin-left: 10px;
+      }
+    }
+  }
+  .second_slide {
+    .part {
+      width: 100%;
+
+      .right_filler {
+        display: none;
+      }
+
+      .separator {
+        width: 70% !important;
+      }
+    }
+
+    .slide_title {
+      font-size: 35px !important;
+    }
+
+    .subtitle {
+      font-size: 20px !important;
+    }
+
+    .text {
+      font-size: 15px !important;
+    }
+
+    .start_button {
+      font-size: 15px !important;
+    }
+  }
+  .third_slide {
+    .slide_title {
+      font-size: 35px !important;
+    }
+
+    .text {
+      font-size: 20px !important;
+      margin-bottom: 30px;
+    }
+
+    .content_wrapper {
+      justify-content: center !important;
+      height: 100% !important;
+    }
+
+    .start_link_text {
+      font-size: 25px !important;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .first_slide {
+    .collections_block {
+      &::before {
+        right: -15px !important;
+      }
+
+      .collections_text {
+        font-size: 20px !important;
+
+      }
+    }
+
+  }
+}
+
 .slider {
   width: 100%;
   height: 100%;
@@ -199,8 +466,8 @@ export default defineComponent({
           display: block;
           background-color: $accent;
           border-radius: 50%;
-          width: 70px;
-          height: 70px;
+          min-width: 70px;
+          min-height: 70px;
           $shadowMargin: -35px;
           -webkit-box-shadow: $shadowMargin 0 0 0 rgba(0, 0, 0, 0.1);
           -moz-box-shadow: $shadowMargin 0 0 0 rgba(0, 0, 0, 0.1);
@@ -366,20 +633,17 @@ export default defineComponent({
 
     .image_wrapper {
       box-sizing: content-box;
+      width: 33.33%;
+      display: flex;
+      justify-content: center;
 
-      &.first_image {
-        width: 431px;
-      }
-
-      &.second_image {
-        width: 456px;
-      }
-
-      .image_wrapper {
+      .image {
         height: 100%;
         -webkit-box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.3);
         -moz-box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.3);
         box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.3);
+        max-width: 431px;
+        object-fit: cover;
       }
     }
 
@@ -391,6 +655,7 @@ export default defineComponent({
       text-align: center;
       height: 87%;
       padding: 60px 0;
+      width: 33.33%;
 
       .title_wrapper {
         display: flex;
@@ -438,7 +703,7 @@ export default defineComponent({
 
 
 .landing_section {
-  height: calc(1080px - 130px);
+  height: min(1080px, calc(100dvh - 60px));
 
   .limiter {
     height: 100%;
@@ -450,6 +715,14 @@ export default defineComponent({
 </style>
 
 <style lang="scss">
+@media (max-width: 600px) {
+  .slide {
+    .filler {
+      display: none !important;
+    }
+  }
+}
+
 .greeting_section {
   .first_slide {
     span {
