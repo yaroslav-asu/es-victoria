@@ -47,7 +47,7 @@ export default defineComponent({
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(white, 0.5);
+    background-color: rgba(white, 0.2);
     z-index: 10;
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
@@ -65,7 +65,6 @@ export default defineComponent({
 .image_content {
   bottom: 10px;
   text-align: center;
-
   position: absolute;
   left: 10px;
   padding: 20px;
