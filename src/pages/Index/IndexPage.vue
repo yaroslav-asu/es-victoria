@@ -18,7 +18,10 @@ import FooterSection from "pages/Index/Sections/FooterSection.vue";
 
 export default defineComponent({
   name: 'IndexPage',
-  components: {FooterSection, CategoryStages, GoodsOfTheDay, GenderChoose, GreetingSection}
+  components: {FooterSection, CategoryStages, GoodsOfTheDay, GenderChoose, GreetingSection},
+  beforeRouteEnter() {
+    ym(94762887, 'hit', "/partners")
+  },
 })
 </script>
 
