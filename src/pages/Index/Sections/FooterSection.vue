@@ -33,9 +33,8 @@
           </div>
         </div>
       </div>
+      <div class="break" v-if="$q.screen.width < 840"/>
       <div class="col contact_col">
-
-
         <div class="col">
           <p class="col_title">
             {{ $t('footer.ourAddresses') }}
@@ -105,6 +104,15 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@media (max-width: 840px) {
+  .limiter{
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+  }
+  .col{
+    align-items: center !important;
+  }
+}
 .contact_section {
   border-top: 1px solid #eaeaea;
 
@@ -164,6 +172,7 @@ export default defineComponent({
       justify-content: center;
       gap: 40px;
       margin-bottom: 25px;
+      flex-wrap: wrap;
     }
 
     .row {
@@ -171,10 +180,10 @@ export default defineComponent({
       align-items: center;
       gap: 20px;
     }
-
-    //.copyright {
-    //  text-align: center;
-    //}
   }
+}
+.break{
+  flex-basis: 100%;
+  height: 0;
 }
 </style>

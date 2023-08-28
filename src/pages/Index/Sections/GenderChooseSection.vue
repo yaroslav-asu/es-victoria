@@ -28,7 +28,7 @@
         <div class="col image_col">
           <q-img class="image_wrapper" src="~/assets/section_2/photos/woman_1.png">
             <a href="" class="text">
-              {{ $t('secondSection.mensCatalog') }}
+              {{ $t('secondSection.womensCatalog') }}
             </a>
           </q-img>
         </div>
