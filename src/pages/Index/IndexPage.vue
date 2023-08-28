@@ -20,7 +20,7 @@ export default defineComponent({
   name: 'IndexPage',
   components: {FooterSection, CategoryStages, GoodsOfTheDay, GenderChoose, GreetingSection},
   beforeRouteEnter() {
-    ym(94762887, 'hit', "/partners")
+    ym(94762887, 'hit', "/")
   },
 })
 </script>
