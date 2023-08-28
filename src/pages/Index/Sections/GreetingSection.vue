@@ -12,6 +12,7 @@
         class="slider greeting_slider"
         infinite
         ref="carousel"
+        autoplay
       >
         <template v-slot:control>
           <q-carousel-control
@@ -109,7 +110,7 @@ export default defineComponent({
   components: {FillerWrapper},
   data() {
     return {
-      slide: 3
+      slide: 1
     }
   }
 })

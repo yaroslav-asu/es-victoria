@@ -71,10 +71,10 @@ export default defineComponent({
   padding: 20px;
   width: calc(100% - 20px);
   color: rgba(black, 0.8);
-  background-color: rgba(white, 0.5);
+  background-color: rgba(white, 0.1);
   backdrop-filter: blur(8px);
   font-size: 16px;
   font-weight: 700;
-
+  z-index: 11;
 }
 </style>
