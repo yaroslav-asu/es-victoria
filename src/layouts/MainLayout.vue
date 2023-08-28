@@ -7,8 +7,7 @@
             <q-icon name="sym_r_search"/>
           </template>
           <template v-slot:append>
-            <q-icon name="close" v-if="search.length" @click="search = ''" class="cursor-pointer"/>
-
+            <q-icon name="close" v-if="search.length" @click="search = ''" class="clear_search cursor-pointer"/>
           </template>
         </q-input>
         <button class="search_button">
@@ -24,7 +23,8 @@
         <img class="logo" src="~/assets/logo.png" alt="Es Victoria"/>
         <div class="header_part buttons">
           <button class="header_button search_button">
-            <img class="icon" src="~/assets/icons/loupe.png" alt="Search Button" @click="toggleSearch" v-if="!searchShowed">
+            <img class="icon" src="~/assets/icons/loupe.png" alt="Search Button" @click="toggleSearch"
+                 v-if="!searchShowed">
             <q-icon class="icon" name="sym_r_close" v-if="searchShowed" @click="toggleSearch"/>
           </button>
           <button class="header_button account">
@@ -73,6 +73,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.clear_search {
+  font-size: 16px;
+}
+
 .search_bar {
   position: fixed;
   top: 66px;
@@ -86,7 +90,6 @@ export default defineComponent({
 
   .limiter {
     display: flex;
-    //align-items: center;
     gap: 10px;
   }
 
