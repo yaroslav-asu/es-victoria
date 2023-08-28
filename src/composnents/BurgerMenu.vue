@@ -482,11 +482,7 @@ export default defineComponent({
       max-height: 100% !important;
     }
   }
-  //.menu_content {
-  //  padding-left: 10px !important;
-  //}
 }
-
 
 .overlay {
   position: absolute;
