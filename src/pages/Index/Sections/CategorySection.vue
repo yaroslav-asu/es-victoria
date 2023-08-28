@@ -2,14 +2,63 @@
   <section class="category_section">
     <div class="limiter">
       <div class="categories">
-        <CategoryComponent
-          v-for="(category, id) in categories"
-          :title="$t(`forthSection.${category.title}`)"
-          :image="`section_4/categories/${category.image}.jpg`"
-          :class="`category_${id + 1}`"
-          :position="category.position ? category.position : null"
-          :img-style="category.imgStyle ? category.imgStyle : null"
-        />
+        <div class="main_block_col first_col">
+          <CategoryComponent
+            :title="$t(`forthSection.shoes`)"
+            image="section_4/categories/1.jpg"
+            class="category_1"
+          />
+          <CategoryComponent
+            :title="$t(`forthSection.outerwear`)"
+            image="section_4/categories/2.jpg"
+            class="category_2"
+          />
+        </div>
+        <div class="main_block_col second_col">
+          <div class="row first_row">
+            <CategoryComponent
+              :title="$t(`forthSection.hoodie`)"
+              image="section_4/categories/6.jpg"
+              class="category_3"
+            />
+            <div class="col">
+              <CategoryComponent
+                :title="$t(`forthSection.hats`)"
+                image="section_4/categories/4.jpg"
+                class="category_4"
+              />
+              <CategoryComponent
+                :title="$t(`forthSection.dresses`)"
+                image="section_4/categories/3.jpg"
+                class="category_5"
+              />
+            </div>
+          </div>
+          <div class="row second_row">
+            <CategoryComponent
+              :title="$t(`forthSection.juwels`)"
+              image="section_4/categories/8.jpg"
+              class="category_6"
+            />
+            <CategoryComponent
+              :title="$t(`forthSection.jeansAndTrousers`)"
+              image="section_4/categories/9.jpg"
+              class="category_7"
+            />
+          </div>
+        </div>
+        <div class="main_block_col third_col">
+          <CategoryComponent
+            :title="$t(`forthSection.tshirts`)"
+            image="section_4/categories/5.jpg"
+            class="category_8"
+          />
+          <CategoryComponent
+            :title="$t(`forthSection.glasses`)"
+            image="section_4/categories/7.jpg"
+            class="category_9"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -22,90 +71,136 @@ import CategoryComponent from "src/composnents/CategoryComponent.vue";
 export default defineComponent({
   name: "CategoryStages",
   components: {CategoryComponent},
-  data() {
-    return {
-      categories: [
-        {title: 'shoes', image: '1',},
-        {title: 'hoodie', image: '6', position: '0 0'},
-        {title: 'hats', image: '4'},
-        {title: 'dresses', image: '3'},
-        {title: 'tshirts', image: '5'},
-        {title: 'outerwear', image: '2'},
-        {title: 'juwels', image: '8'},
-        {title: 'jeansAndTrousers', image: '9'},
-        {title: 'glasses', image: '7'},
-      ]
-    }
-  }
 })
 </script>
 
 <style scoped lang="scss">
+@media (max-width: 1530px) {
+  .category_6{
+    width: calc(50% - calc(15px / 2)) !important;
+  }
+  .category_7{
+    width: calc(50% - calc(15px / 2)) !important;
+  }
+}
+@media (max-width: 1250px) {
+  .category_3{
+    width: calc(50% - calc(15px / 2)) !important;
+  }
+}
+@media (max-width: 1024px) {
+  .first_col{
+    flex-grow: 25 !important;
+  }
+  .third_col{
+    flex-grow: 25 !important;
+
+  }
+}
+@media (max-width: 840px) {
+  .first_col{
+    flex-grow: 20 !important;
+  }
+  .third_col{
+    flex-grow: 20 !important;
+  }
+}
+@media (max-width: 790px) {
+  .categories{
+    flex-direction: column;
+  }
+  .first_col{
+    flex-direction: row !important;
+  }
+  .third_col{
+    flex-direction: row !important;
+  }
+}
 .category_section {
   $gap: 15px;
   padding: 30px 0 7rem;
 
   .categories {
-    $widthGap: calc(#{$gap} * 4 / 5);
-    display: grid;
-    grid-template-columns: min(calc(23.375vw - #{$widthGap}), 435.383px)  min(calc(9.35vw - #{$widthGap}), 166.95px) min(calc(21.0375vw - #{$widthGap}), 405.65px) min(calc(9.35vw - #{$widthGap}), 166.9px) min(calc(30.3875vw - #{$widthGap}), 569.617px);
-    grid-template-rows: min(calc(15.1937vw - #{$widthGap} / 2), 284.8px) min(calc(8.1812vw - #{$gap} - #{$widthGap} / 2), 150.583px) min(calc(7.0125vw - #{$widthGap}), 137.217px) min(16.3625vw, 328.167px) min(calc(14.025vw - #{$widthGap} * 2), 244.433px);
+    display: flex;
     gap: $gap;
 
-    .category_1 {
-      grid-column-start: 1;
-      grid-column-end: 2;
-      grid-row-start: 1;
-      grid-row-end: 3;
+    .main_block_col {
+      display: flex;
+      flex-direction: column;
+      gap: $gap;
     }
 
-    .category_2 {
-      grid-column-start: 2;
-      grid-column-end: 4;
-      grid-row-start: 1;
-      grid-row-end: 4;
+    .first_col {
+      flex-grow: 30;
+
+      .category_1 {
+        aspect-ratio: 1;
+        flex-grow: 1;
+      }
+
+      .category_2 {
+        flex-grow: 2;
+
+      }
     }
 
-    .category_3 {
-      grid-column-start: 4;
-      grid-column-end: 5;
-      grid-row-start: 1;
-      grid-row-end: 2;
+    .second_col {
+      //width: 40.75%;
+      flex-grow: 40;
+
+      .first_row {
+        display: flex;
+        gap: $gap;
+        flex-grow: 1;
+        flex-wrap: nowrap;
+
+        .category_3 {
+          aspect-ratio: 1;
+          width: 70%;
+          //flex-grow: 1;
+        }
+
+        .col {
+          width: 30%;
+          gap: $gap;
+          display: flex;
+          flex-direction: column;
+          //flex-grow: 30;
+          .category_4 {
+            flex-grow: 1;
+          }
+
+          .category_5 {
+            flex-grow: 1;
+          }
+        }
+      }
+
+      .second_row {
+        width: 100%;
+        display: flex;
+        gap: $gap;
+
+        .category_6 {
+          width: calc(28.75% - calc(#{$gap} / 2));
+          flex-grow: 2;
+        }
+
+        .category_7 {
+          width: calc(71.25% - calc(#{$gap} / 2));
+          flex-grow: 1;
+        }
+      }
+
     }
 
-    .category_4 {
-      grid-column-start: 4;
-      grid-column-end: 5;
-      grid-row-start: 2;
-      grid-row-end: 4;
-    }
+    .third_col {
+      //width: 31.25%;
+      flex-grow: 30;
 
-    .category_5 {
-      grid-column-start: 5;
-      grid-column-end: 6;
-      grid-row-start: 1;
-      grid-row-end: 5;
-    }
-
-    .category_6 {
-      grid-column-start: 1;
-      grid-column-end: 2;
-      grid-row-start: 3;
-      grid-row-end: 6;
-    }
-
-    .category_7 {
-      grid-column-start: 2;
-      grid-column-end: 3;
-      grid-row-start: 4;
-      grid-row-end: 6;
-    }
-
-    .category_8 {
-      grid-column-start: 3;
-      grid-column-end: 5;
-      grid-row-start: 4;
-      grid-row-end: 6;
+      .category_8 {
+        flex-grow: 1;
+      }
     }
   }
 }
