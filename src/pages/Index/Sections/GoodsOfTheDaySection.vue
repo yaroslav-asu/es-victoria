@@ -145,6 +145,7 @@ export default defineComponent({
     gap: 40px !important;
   }
 }
+
 @media (max-width: 550px) {
   .products_wrapper {
     gap: 20px !important;
@@ -180,10 +181,9 @@ export default defineComponent({
 
       .control_wrapper {
         position: absolute;
-        height: 100%;
-        top: 0;
-        display: flex;
-        align-items: center;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
 
         &.left {
           left: 0;
@@ -197,8 +197,6 @@ export default defineComponent({
           z-index: 1;
           background-color: transparent;
           font-size: 30px;
-          height: 100%;
-          padding-bottom: 65px;
         }
       }
 
@@ -231,6 +229,7 @@ export default defineComponent({
 
             .favorite_button {
               font-size: 30px;
+              cursor: pointer;
             }
           }
         }
