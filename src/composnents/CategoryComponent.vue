@@ -22,7 +22,7 @@ export default defineComponent({
     },
     ratio: {
       type: Number,
-      default: ''
+      default: 0
     },
     position: {
       type: String,

@@ -11,9 +11,13 @@
             <q-icon class="icon" name="sym_r_chevron_left"/>
           </button>
         </div>
-        <div class="products_wrapper"
-             :style="{right:this.rightPadding+ 'px'}">
-          <div class="product" v-for="(product, id) in products" :key="product.price" ref="product">
+        <div
+          class="products_wrapper"
+          :style="{right:this.rightPadding+ 'px'}"
+          ref="wrapper"
+        >
+          <div class="product" v-for="(product, id) in products" :key="product.price" ref="product"
+               :style="{minWidth:`calc(${wrapperWidth / sliderShift - (sliderShift - 1) * slidesGap / sliderShift}px)` }">
             <q-img class="product_image" :src="`section_3/shorts/${id + 1}.png`" :ratio="413/577" fit="contain">
               <div class="content">
                 <q-icon
@@ -30,9 +34,10 @@
             </div>
             <q-resize-observer @resize="productResize"/>
           </div>
+          <q-resize-observer @resize="wrapperResize"/>
         </div>
         <div class="control_wrapper right">
-          <button class="products_control" v-if="slider.page < products.length / slider.shift" @click="slider.page++">
+          <button class="products_control" v-if="slider.page < products.length / sliderShift" @click="slider.page++">
             <q-icon class="icon" name="sym_r_chevron_right"/>
           </button>
         </div>
@@ -50,7 +55,7 @@ export default defineComponent({
     return {
       slider: {
         page: 1,
-        shift: 5
+        // shift: 5shift: 5
       },
       products: [
         {
@@ -91,25 +96,61 @@ export default defineComponent({
           favorite: false,
         },
       ],
-      productWidth: 0
+      productWidth: 0,
+      wrapperWidth: 0,
     }
   },
   methods: {
     productResize() {
       if (!this.$refs.product || !this.$refs.product.length) return
       this.productWidth = this.$refs.product[0].getBoundingClientRect().width
+    },
+    wrapperResize() {
+      this.wrapperWidth = this.$refs.wrapper.getBoundingClientRect().width
     }
   },
   computed: {
     rightPadding() {
       if (this.slider.page === 1) return 30
-      return (this.slider.page - 1) * this.slider.shift * this.productWidth + (this.slider.page - 1) * this.slider.shift * 60 + 30
+      return (this.slider.page - 1) * this.sliderShift * this.productWidth + (this.slider.page - 1) * this.sliderShift * this.slidesGap + 30
+    },
+    sliderShift() {
+      if (this.$q.screen.width <= 550) {
+        return 2
+      }
+      if (this.$q.screen.width <= 930) {
+        return 3
+      }
+      if (this.$q.screen.width <= 1400) {
+        return 4
+      }
+      return 5
+    },
+    slidesGap() {
+      if (this.$q.screen.width <= 550) {
+        return 20
+      }
+      if (this.$q.screen.width <= 800) {
+        return 40
+      }
+      return 60
     }
-  }
+  },
 })
 </script>
 
 <style scoped lang="scss">
+@media (max-width: 800px) {
+  .products_wrapper {
+    gap: 40px !important;
+  }
+}
+@media (max-width: 550px) {
+  .products_wrapper {
+    gap: 20px !important;
+  }
+}
+
 .goods_of_the_day {
   padding: 60px 0;
 
@@ -166,14 +207,13 @@ export default defineComponent({
         flex-wrap: nowrap;
         gap: 60px;
         position: relative;
-        padding-left: 60px;
+        padding-left: 30px;
         transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
         .product {
           display: flex;
           flex-direction: column;
           height: 100%;
-          min-width: calc(100% / 5 - 45px);
           position: relative;
 
           .product_image {
