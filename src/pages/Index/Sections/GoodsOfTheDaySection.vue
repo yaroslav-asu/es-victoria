@@ -1,7 +1,7 @@
 <template>
   <section class="goods_of_the_day">
     <div class="limiter">
-      <div class="row">
+      <div class="row title_row">
         <p class="title">{{ $t('thirdSection.title') }}</p>
         <div class="separator"/>
       </div>
@@ -16,8 +16,12 @@
           <div class="product" v-for="(product, id) in products" :key="product.price" ref="product">
             <q-img class="product_image" :src="`section_3/shorts/${id + 1}.png`" :ratio="413/577" fit="contain">
               <div class="content">
-                <q-icon class="favorite_button" :name="product.favorite ? 'favorite':'favorite_border'"
-                        @click="product.favorite = !product.favorite"/>
+                <q-icon
+                  class="favorite_button"
+                  :name="product.favorite ? 'favorite':'favorite_border'"
+                  @click="product.favorite = !product.favorite"
+                  :color="product.favorite ? 'red' : 'black'"
+                />
               </div>
             </q-img>
             <div class="row">
@@ -46,7 +50,7 @@ export default defineComponent({
     return {
       slider: {
         page: 1,
-        shift: 3
+        shift: 5
       },
       products: [
         {
@@ -107,10 +111,10 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .goods_of_the_day {
-  .limiter {
-    padding: 40px 0;
+  padding: 60px 0;
 
-    .row {
+  .limiter {
+    .title_row {
       display: flex;
       align-items: center;
       gap: 15px;
@@ -125,7 +129,7 @@ export default defineComponent({
         background-color: $dark;
       }
 
-      margin-bottom: 40px;
+      margin-bottom: 60px;
     }
 
     .products_view {
@@ -153,6 +157,7 @@ export default defineComponent({
           background-color: transparent;
           font-size: 30px;
           height: 100%;
+          padding-bottom: 65px;
         }
       }
 
@@ -168,7 +173,7 @@ export default defineComponent({
           display: flex;
           flex-direction: column;
           height: 100%;
-          min-width: calc(100% / 4 - 45px);
+          min-width: calc(100% / 5 - 45px);
           position: relative;
 
           .product_image {
@@ -185,7 +190,7 @@ export default defineComponent({
             }
 
             .favorite_button {
-
+              font-size: 30px;
             }
           }
         }
@@ -193,13 +198,10 @@ export default defineComponent({
         .row {
           display: flex;
           justify-content: space-between;
-          padding: 0 10px;
-
-          .product_title {
-          }
-
-          .price {
-          }
+          padding: 10px 10px 0 10px;
+          font-weight: 700;
+          align-items: center;
+          font-size: 18px;
         }
       }
     }

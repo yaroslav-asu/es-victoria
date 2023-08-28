@@ -1,5 +1,21 @@
 <template>
   <q-layout view="lHh Lpr lFf">
+    <div class="search_bar" :style="{transform: searchShowed ?  `translate(0)` : ''}">
+      <div class="limiter">
+        <q-input v-model="search" borderless dense class="search">
+          <template v-slot:prepend>
+            <q-icon name="sym_r_search"/>
+          </template>
+          <template v-slot:append>
+            <q-icon name="close" v-if="search.length" @click="search = ''" class="cursor-pointer"/>
+
+          </template>
+        </q-input>
+        <button class="search_button">
+          {{ $t('header.search') }}
+        </button>
+      </div>
+    </div>
     <q-header class="header">
       <div class="limiter">
         <nav class="header_part navigation">
@@ -8,9 +24,8 @@
         <img class="logo" src="~/assets/logo.png" alt="Es Victoria"/>
         <div class="header_part buttons">
           <button class="header_button search_button">
-            <img class="icon" src="~/assets/icons/loupe.png" alt="Search Button" @click="toggleSearch">
-            <input type="text" class="search" :class="searchShowed ? 'search--active' : ''"
-                   :style="{cursor : searchShowed ? 'auto': 'default !important'}" :disabled="!searchShowed">
+            <img class="icon" src="~/assets/icons/loupe.png" alt="Search Button" @click="toggleSearch" v-if="!searchShowed">
+            <q-icon class="icon" name="sym_r_close" v-if="searchShowed" @click="toggleSearch"/>
           </button>
           <button class="header_button account">
             <img class="icon" src="~/assets/icons/bag.png" alt="Search Button">
@@ -41,7 +56,7 @@ export default defineComponent({
   data() {
     return {
       searchShowed: false,
-      hideSearch: false
+      search: '',
     }
   },
   methods: {
@@ -58,7 +73,38 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.search_bar {
+  position: fixed;
+  top: 66px;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #fff;
+  transform: translate(0, -100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 100;
 
+  .limiter {
+    display: flex;
+    //align-items: center;
+    gap: 10px;
+  }
+
+  .search {
+    width: 100%;
+    background-color: rgba($dark, 0.1);
+    padding: 0 10px;
+    border-radius: 10px;
+  }
+
+  .search_button {
+    padding: 0 15px;
+    border-radius: 10px;
+    background-color: $dark;
+    color: white;
+
+  }
+}
 
 .header {
   background-color: #fff;
@@ -73,7 +119,6 @@ export default defineComponent({
   .header_part {
     width: calc(50% - 53px);
   }
-
 
   .limiter {
     display: flex;
@@ -107,30 +152,12 @@ export default defineComponent({
 
         .icon {
           max-width: 25px;
+          font-size: 25px;
           z-index: 1;
         }
 
         &.search_button {
           position: relative;
-
-          .search {
-            transition: width 0.5s ease-in-out, border 0.5s ease-in-out;
-            outline: none;
-            padding: 10px;
-            padding-right: 35px;
-            border: 2px solid white;
-            width: 20px;
-            position: absolute;
-            border-radius: 10px;
-
-            right: -5px;
-            z-index: 0;
-
-            &.search--active {
-              width: 300px;
-              border: 2px solid rgba($dark, 0.2) !important;
-            }
-          }
         }
       }
     }

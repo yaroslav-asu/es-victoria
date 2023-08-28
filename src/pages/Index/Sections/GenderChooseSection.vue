@@ -20,21 +20,16 @@
       <div class="images_wrapper">
         <div class="col image_col">
           <q-img class="image_wrapper" src="~/assets/section_2/photos/man_1.png">
-<!--            <div class="text_wrapper">-->
-              <a href="" class="text">
-                {{ $t('secondSection.mensCatalog') }}
-              </a>
-<!--            </div>-->
-
+            <a href="" class="text">
+              {{ $t('secondSection.mensCatalog') }}
+            </a>
           </q-img>
         </div>
         <div class="col image_col">
           <q-img class="image_wrapper" src="~/assets/section_2/photos/woman_1.png">
-<!--            <div class="text_wrapper">-->
-              <a href="" class="text">
-                {{ $t('secondSection.mensCatalog') }}
-              </a>
-<!--            </div>-->
+            <a href="" class="text">
+              {{ $t('secondSection.mensCatalog') }}
+            </a>
           </q-img>
         </div>
       </div>
@@ -99,9 +94,6 @@ export default defineComponent({
   }
   .text_col {
     width: calc(65% - 60px) !important;
-  }
-  .image_wrapper {
-    margin-bottom: 30px !important;
   }
 }
 
@@ -173,9 +165,6 @@ export default defineComponent({
       display: none !important;
     }
   }
-  .image_wrapper {
-    margin-bottom: 10px !important;
-  }
 }
 
 @media (max-width: 430px) {
@@ -207,6 +196,7 @@ export default defineComponent({
         font-size: 24px;
         color: white;
         margin-bottom: 40px;
+        text-shadow: 0 0 14px rgba(0, 0, 0, 0.6);
       }
 
       .title {
@@ -258,24 +248,21 @@ export default defineComponent({
         width: 50%;
 
         .image_wrapper {
-          margin-bottom: 40px;
           width: 100%;
 
-          //.text_wrapper {
-            .text {
-              position: absolute;
-              bottom: 10px;
-              left: 10px;
-              padding: 20px;
-              text-align: center;
-              width: calc(100% - 20px);
-              color: rgba(black, 0.8);
-              background-color: rgba(white, 0.5);
-              backdrop-filter: blur(5px);
-              font-size: 16px;
-              font-weight: 700;
-            }
-          //}
+          .text {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            padding: 20px;
+            text-align: center;
+            width: calc(100% - 20px);
+            color: rgba(black, 0.8);
+            background-color: rgba(white, 0.5);
+            backdrop-filter: blur(8px);
+            font-size: 16px;
+            font-weight: 700;
+          }
 
 
           &::before {

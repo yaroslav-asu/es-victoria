@@ -39,12 +39,18 @@ export default defineComponent({
 <style scoped lang="scss">
 
 .image_content {
-  color: $dark;
-  background-color: rgba(white, 0.8);
   bottom: 10px;
-  width: calc(100% - 20px);
-  left: 50%;
-  transform: translateX(-50%);
   text-align: center;
+
+  position: absolute;
+  left: 10px;
+  padding: 20px;
+  width: calc(100% - 20px);
+  color: rgba(black, 0.8);
+  background-color: rgba(white, 0.5);
+  backdrop-filter: blur(8px);
+  font-size: 16px;
+  font-weight: 700;
+
 }
 </style>

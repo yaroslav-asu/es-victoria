@@ -6,6 +6,7 @@ import forthSection from "src/i18n/ru-RU/forthSection";
 import menu from "src/i18n/ru-RU/menu";
 import footer from "src/i18n/ru-RU/footer";
 import clothes from "src/i18n/ru-RU/clothes/clothes";
+import header from "src/i18n/ru-RU/header";
 
 export default {
   firstSection,
@@ -15,5 +16,6 @@ export default {
   buttons,
   menu,
   footer,
-  clothes
+  clothes,
+  header
 }
