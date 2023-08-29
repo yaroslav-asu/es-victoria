@@ -76,4 +76,11 @@ export default defineComponent({
   font-weight: 700;
   z-index: 11;
 }
+
+@media (max-width: 600px) {
+  .image_content {
+    backdrop-filter: none !important;
+    background-color: rgba(white, 0.7) !important;
+  }
+}
 </style>

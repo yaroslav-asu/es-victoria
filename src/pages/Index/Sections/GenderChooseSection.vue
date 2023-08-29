@@ -33,11 +33,8 @@
           </q-img>
         </div>
       </div>
-
     </div>
-
   </section>
-
 </template>
 
 <script>
@@ -109,6 +106,15 @@ export default defineComponent({
   }
   .partnersWrapper {
     display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .image_wrapper {
+    .text {
+      backdrop-filter: none !important;
+      background-color: rgba(white, 0.7) !important;
+    }
   }
 }
 

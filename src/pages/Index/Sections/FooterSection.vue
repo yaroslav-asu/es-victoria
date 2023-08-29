@@ -1,5 +1,5 @@
 <template>
-  <div class="contact_section">
+  <section class="contact_section">
     <div class="limiter">
       <div class="col">
         <p class="col_title">
@@ -50,7 +50,6 @@
             {{ $t('footer.novisad') }}
           </p>
         </div>
-
       </div>
       <div class="col contact_col">
         <div class="col">
@@ -67,8 +66,8 @@
 
       </div>
     </div>
+  </section>
 
-  </div>
   <footer class="footer">
     <div class="limiter">
       <div class="payment_methods">
@@ -105,14 +104,19 @@ export default defineComponent({
 
 <style scoped lang="scss">
 @media (max-width: 840px) {
-  .limiter{
+  .limiter {
     flex-wrap: wrap !important;
     gap: 20px !important;
   }
-  .col{
+  .col {
     align-items: center !important;
+    text-align: center;
+  }
+  .contact_col {
+    justify-content: flex-start !important;
   }
 }
+
 .contact_section {
   border-top: 1px solid #eaeaea;
 
@@ -182,7 +186,8 @@ export default defineComponent({
     }
   }
 }
-.break{
+
+.break {
   flex-basis: 100%;
   height: 0;
 }
